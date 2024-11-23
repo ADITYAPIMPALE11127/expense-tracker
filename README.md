@@ -40,9 +40,6 @@ npm start
 Sure! Here's a sample README file content for your Expense Tracking App project. You can customize it further based on your preferences and any additional details about your project.
 
 markdown
-# Expense Tracking App
-
-**Expense Tracking App** is a user-friendly web application designed to help users manage and track their personal expenses. With an intuitive interface, this application allows you to easily add, view, and categorize your expenses, providing a comprehensive overview of your financial habits.
 
 ## Features
 
