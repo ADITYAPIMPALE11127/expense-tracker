@@ -5,6 +5,15 @@ body {
     margin: 0; /* Remove default margin */
     padding: 20px; /* Add padding to the body */
 }
+/* ExpenseForm.css */
+form input,
+form select,
+form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
 
 /* Form Container */
 form {

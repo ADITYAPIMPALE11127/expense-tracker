@@ -32,7 +32,7 @@ function ExpenseTable({ expenseEntries, onReset }) {
                         </tr>
                     ))}
                     <tr>
-                        <td colSpan="4" className="total-row">
+                        <td colSpan="3" className="total-row">
                             Total: {calculateTotalAmount()}
                         </td>
                     </tr>

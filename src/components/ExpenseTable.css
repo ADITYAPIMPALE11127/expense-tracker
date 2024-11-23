@@ -3,11 +3,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 800px;
-    background-color: #f9f9f9; /* Light background for the container */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    padding: 20px; /* Padding around the content */
+    width: 100%;
+    /* Use responsive width */
+    max-width: 800px;
+    /* Keep a max width for larger screens */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 .expense-table-header {
@@ -15,31 +18,58 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 20px; /* Space below the header */
+    margin-bottom: 20px;
 }
 
 .expense-table {
     width: 100%;
-    border-collapse: collapse; /* Remove space between borders */
+    border-collapse: collapse;
 }
 
-.expense-table th, .expense-table td {
-    padding: 12px; /* Padding inside table cells */
-    text-align: left; 
-    border-bottom: 1px solid #ddd; /* Bottom border for rows */
+.expense-table th,
+.expense-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 .expense-table th {
-    background-color: #4CAF50; /* Header background color */
-    color: white; /* Header text color */
+    background-color: #4CAF50;
+    color: white;
 }
 
 .expense-table tr:hover {
-    background-color: #f1f1f1; /* Highlight row on hover */
+    background-color: #f1f1f1;
 }
 
 .total-row {
     text-align: right;
     font-weight: bold;
-    background-color: #e0f7fa; /* Light blue background for total row */
+    background-color: #e0f7fa;
+}
+
+@media (max-width: 768px) {
+    .expense-table-container {
+        padding: 10px;
+        /* Reduce padding on smaller screens */
+    }
+
+    .expense-table th,
+    .expense-table td {
+        padding: 8px;
+        /* Smaller padding for mobile */
+        font-size: 0.9rem;
+        /* Reduce font size for readability */
+    }
+
+    .expense-table-header {
+        flex-direction: column;
+        /* Stack header items on smaller screens */
+        align-items: flex-start;
+    }
+
+    .total-row {
+        font-size: 1rem;
+        /* Adjust font size for total row */
+    }
 }

@@ -47,12 +47,14 @@ function App() {
             <header className="app-header">
                 <h1>Expense Tracking App</h1>
             </header>
-            <div style={containerStyle}>
-                <div style={{ ...itemStyle, marginRight: '20px' }}>
-                    <ExpenseForm addExpense={addExpense} />
-                </div>
-                <div style={itemStyle}>
-                    <ExpenseTable expenseEntries={expenseEntries} onReset={handleReset} />
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-md-6 mb-3">
+                        <ExpenseForm addExpense={addExpense} />
+                    </div>
+                    <div className="col-12 col-md-6">
+                        <ExpenseTable expenseEntries={expenseEntries} onReset={handleReset} />
+                    </div>
                 </div>
             </div>
         </div>
