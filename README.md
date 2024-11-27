@@ -7,6 +7,7 @@
 - **Add Expenses**: Quickly input your expenses along with the amount, date, description, and category.
 - **View Expenses**: Display a detailed table of all your expenses, allowing you to easily track your spending.
 - **Total Calculation**: Automatically calculates and displays the total amount of all expenses.
+- **Delete Expenses**: Remove individual expense entries with a confirmation modal to prevent accidental deletions.
 - **Data Persistence**: Utilizes local storage to save your expense data, ensuring it remains available even after refreshing the page.
 - **Responsive Design**: Optimized for both desktop and mobile devices, providing a seamless user experience across various screen sizes.
 - **Reset Functionality**: Clear all stored expenses with a single click to start fresh.
