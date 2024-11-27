@@ -27,6 +27,12 @@ function App() {
         localStorage.setItem('expenseData', JSON.stringify(updatedEntries));
     };
 
+    const handleDeleteEntry = (indexToRemove) => {
+        const updatedEntries = expenseEntries.filter((_, index) => index !== indexToRemove);
+        setExpenseEntries(updatedEntries);
+        localStorage.setItem('expenseData', JSON.stringify(updatedEntries));
+    };
+
     const containerStyle = {
         display: 'flex',
         justifyContent: 'space-between',
@@ -53,7 +59,11 @@ function App() {
                         <ExpenseForm addExpense={addExpense} />
                     </div>
                     <div className="col-12 col-md-6">
-                        <ExpenseTable expenseEntries={expenseEntries} onReset={handleReset} />
+                        <ExpenseTable
+                            expenseEntries={expenseEntries}
+                            onReset={handleReset}
+                            onDelete={handleDeleteEntry} // Pass the delete handler
+                        />
                     </div>
                 </div>
             </div>

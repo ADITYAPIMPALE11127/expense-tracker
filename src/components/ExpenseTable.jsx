@@ -2,7 +2,7 @@ import React from 'react';
 import ResetTableButton from './ResetTableButton';
 import './ExpenseTable.css'; 
 
-function ExpenseTable({ expenseEntries, onReset }) {
+function ExpenseTable({ expenseEntries, onReset, onDelete }) { // Add onDelete prop
     const calculateTotalAmount = () => {
         return expenseEntries.reduce((total, entry) => total + (entry.amount || 0), 0);
     };
@@ -20,6 +20,7 @@ function ExpenseTable({ expenseEntries, onReset }) {
                         <th>Date</th>
                         <th>Description</th>
                         <th>Category</th>
+                        <th>Action</th> {/* Add a new column for actions */}
                     </tr>
                 </thead>
                 <tbody style={{color:'#000'}}>
@@ -29,10 +30,13 @@ function ExpenseTable({ expenseEntries, onReset }) {
                             <td>{entry.date}</td>
                             <td>{entry.description}</td>
                             <td>{entry.category}</td>
+                            <td>
+                                <button style={{borderRadius:30}} onClick={() => onDelete(index)}>Delete</button> {/* Add delete button */}
+                            </td>
                         </tr>
                     ))}
                     <tr>
-                        <td colSpan="3" className="total-row">
+                        <td colSpan="4" className="total-row"> {/* Adjust colSpan */}
                             Total: {calculateTotalAmount()}
                         </td>
                     </tr>
