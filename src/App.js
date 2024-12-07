@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import ExpenseForm from './components/expenseForm';
 import ExpenseTable from './components/ExpenseTable';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'; // Import the CSS file for styling
+import './App.css';
 
 function App() {
     const [expenseEntries, setExpenseEntries] = useState([]);
+    const [entryToEdit, setEntryToEdit] = useState(null);
 
     useEffect(() => {
-        // Load initial data from local storage
         const storedEntries = JSON.parse(localStorage.getItem('expenseData'));
         if (Array.isArray(storedEntries)) {
             setExpenseEntries(storedEntries);
@@ -16,15 +16,23 @@ function App() {
     }, []);
 
     const handleReset = () => {
-        // Clear local storage and update state
         localStorage.removeItem('expenseData');
         setExpenseEntries([]);
     };
 
     const addExpense = (expenseData) => {
-        const updatedEntries = [...expenseEntries, expenseData];
-        setExpenseEntries(updatedEntries);
-        localStorage.setItem('expenseData', JSON.stringify(updatedEntries));
+        if (entryToEdit !== null) {
+            const updatedEntries = expenseEntries.map((entry, index) =>
+                index === entryToEdit ? expenseData : entry
+            );
+            setExpenseEntries(updatedEntries);
+            localStorage.setItem('expenseData', JSON.stringify(updatedEntries));
+            setEntryToEdit(null);
+        } else {
+            const updatedEntries = [...expenseEntries, expenseData];
+            setExpenseEntries(updatedEntries);
+            localStorage.setItem('expenseData', JSON.stringify(updatedEntries));
+        }
     };
 
     const handleDeleteEntry = (indexToRemove) => {
@@ -33,19 +41,13 @@ function App() {
         localStorage.setItem('expenseData', JSON.stringify(updatedEntries));
     };
 
-    const containerStyle = {
-        display: 'flex',
-        justifyContent: 'space-between',
-        padding: '20px',
-        height: '500px' // Set the desired height for both components
+    const handleEditEntry = (indexToEdit) => {
+        setEntryToEdit(indexToEdit);
     };
 
-    const itemStyle = {
-        flex: '1',
-        marginRight: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%' // Make sure each component fills the available height
+    const handleUpdate = (updatedEntries) => {
+        setExpenseEntries(updatedEntries);
+        localStorage.setItem('expenseData', JSON.stringify(updatedEntries));
     };
 
     return (
@@ -56,13 +58,17 @@ function App() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-6 mb-3">
-                        <ExpenseForm addExpense={addExpense} />
+                        <ExpenseForm
+                            addExpense={addExpense}
+                            entryToEdit={entryToEdit !== null ? expenseEntries[entryToEdit] : null}
+                        />
                     </div>
                     <div className="col-12 col-md-6">
                         <ExpenseTable
                             expenseEntries={expenseEntries}
                             onReset={handleReset}
-                            onDelete={handleDeleteEntry} // Pass the delete handler
+                            onDelete={handleDeleteEntry}
+                            onEdit={handleEditEntry}
                         />
                     </div>
                 </div>

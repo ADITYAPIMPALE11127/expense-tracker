@@ -3,10 +3,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 600px;
-    /* Use responsive width */
-    max-width: 850px;
-    /* Keep a max width for larger screens */
+    width: 100%;
+    max-width: 600px; /* Responsive max width */
     background-color: #f9f9f9;
     border-radius: 8px;
     padding: 20px;
@@ -23,18 +21,22 @@
 .expense-table {
     width: 100%;
     border-collapse: collapse;
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
 }
 
 .expense-table th,
 .expense-table td {
-    padding: 6px;
+    padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflowing content */
 }
 
 .expense-table th {
     background-color: #4CAF50;
     color: white;
+    font-size: 1rem; /* Slightly larger font for headers */
 }
 
 .expense-table tr:hover {
@@ -47,28 +49,93 @@
     background-color: #e0f7fa;
 }
 
+.button-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.expense-button {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.expense-icon {
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.delete-button {
+    background-color: red;
+}
+
+.edit-button {
+    background-color: green;
+}
+
+/* Responsive table adjustments */
 @media (max-width: 768px) {
     .expense-table-container {
-        padding: 10px;
-        /* Reduce padding on smaller screens */
+        padding: 10px; /* Reduce padding on smaller screens */
     }
 
     .expense-table th,
     .expense-table td {
-        padding: 1px;
-        /* Smaller padding for mobile */
-        font-size: 0.9rem;
-        /* Reduce font size for readability */
+        padding: 6px; /* Reduce padding for mobile */
+        font-size: 0.85rem; /* Smaller font size for mobile */
+        word-wrap: break-word; /* Allow word wrapping */
+    }
+
+    .expense-table th {
+        font-size: 0.9rem; /* Adjust header font size */
     }
 
     .expense-table-header {
         flex-direction: column;
-        /* Stack header items on smaller screens */
         align-items: flex-start;
     }
 
-    .total-row {
-        font-size: 1rem;
-        /* Adjust font size for total row */
+    .expense-button {
+        padding: 8px; /* Smaller padding on mobile */
+        font-size: 0.9rem; /* Smaller font size for buttons */
+    }
+
+    .expense-icon {
+        font-size: 18px; /* Reduce icon size for mobile */
+        padding: 4px; /* Reduce padding around icon */
+    }
+
+    .button-container {
+        gap: 5px; /* Reduce space between buttons on mobile */
+    }
+
+    /* Make the table scrollable horizontally on small screens */
+    .expense-table {
+        display: block;
+        overflow-x: auto; /* Enable horizontal scroll */
+        white-space: nowrap; /* Prevent wrapping of columns */
+    }
+
+    /* Ensure the columns stay aligned horizontally on small screens */
+    .expense-table th,
+    .expense-table td {
+        display: inline-block;
+        min-width: 100px; /* Ensures a minimum width for readability */
+        text-align: center;
+    }
+
+    .expense-table td {
+        padding: 6px 10px; /* Adjust padding for better spacing */
+    }
+
+    /* Allow the date and description columns to wrap on small screens */
+    .expense-table td.date, .expense-table td.description {
+        white-space: normal; /* Allow wrapping */
     }
 }

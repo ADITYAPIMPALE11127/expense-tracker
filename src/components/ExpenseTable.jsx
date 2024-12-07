@@ -1,73 +1,90 @@
 import React, { useState } from 'react';
 import ResetTableButton from './ResetTableButton';
 import ConfirmationModal from './ConfirmationModal'; // Import the modal
-import './ExpenseTable.css'; 
+import 'boxicons';
+import './ExpenseTable.css';
 
-function ExpenseTable({ expenseEntries, onReset, onDelete }) {
-    const [isModalOpen, setModalOpen] = useState(false);
-    const [entryToDelete, setEntryToDelete] = useState(null);
-
-    const calculateTotalAmount = () => {
-        return expenseEntries.reduce((total, entry) => total + (entry.amount || 0), 0);
-    };
+function ExpenseTable({ expenseEntries, onReset, onDelete, onEdit }) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState(null);
 
     const handleDeleteClick = (index) => {
-        setEntryToDelete(index);
-        setModalOpen(true);
+        setSelectedIndex(index);
+        setIsModalOpen(true);
     };
 
     const handleConfirmDelete = () => {
-        if (entryToDelete !== null) {
-            onDelete(entryToDelete);
-            setEntryToDelete(null);
+        if (selectedIndex !== null) {
+            onDelete(selectedIndex);
+            setSelectedIndex(null);
         }
-        setModalOpen(false);
+        setIsModalOpen(false);
     };
 
     const handleCloseModal = () => {
-        setModalOpen(false);
-        setEntryToDelete(null);
+        setIsModalOpen(false);
+        setSelectedIndex(null);
     };
 
     return (
         <div className="expense-table-container">
             <div className="expense-table-header">
-                <h2 style={{color:'#000'}}>Expense Table</h2>
+                <h2 style={{ color: '#000' }}>Expense Table</h2>
                 <ResetTableButton handleReset={onReset} />
             </div>
             <table className="expense-table">
                 <thead>
                     <tr>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Action</th>
+                    <th style={{ width: '20%' }}>Amount</th>
+<th style={{ width: '20%' }}>Date</th>
+<th style={{ width: '20%' }}>Description</th>
+<th style={{ width: '25%' }}>Category</th>
+<th>Action</th>
+
                     </tr>
                 </thead>
-                <tbody style={{color:'#000'}}>
+                <tbody style={{ color: '#000' }}>
                     {expenseEntries.map((entry, index) => (
                         <tr key={index}>
                             <td>{entry.amount}</td>
-                            <td>{entry.date}</td>
-                            <td>{entry.description}</td>
-                            <td>{entry.category}</td>
+                            <td style={{ width: '20%' }}>{entry.date}</td>
+                            <td style={{ width: '20%' }}>{entry.description}</td>
+                            <td style={{ width: '25%' }}>{entry.category}</td>
                             <td>
-                                <button style={{borderRadius:30}} onClick={() => handleDeleteClick(index)}>Delete</button>
+                                <div className="button-container">
+                                    <button onClick={() => handleDeleteClick(index)} style={{
+                                        backgroundColor: 'red',
+                                        border: 'none',
+                                        padding: '10px',
+                                        cursor: 'pointer',
+                                        borderRadius: '30px',
+                                        userSelect:'none'
+                                    }} className="expense-button">
+                                        <box-icon className="expense-icon" name='trash'></box-icon>
+                                    </button>
+                                    <button onClick={() => onEdit(index)} style={{
+                                        backgroundColor: 'green',
+                                        border: 'none',
+                                        padding: '10px',
+                                        cursor: 'pointer',
+                                        borderRadius: '30px',
+                                         userSelect:'none'
+                                    }} className="expense-button">
+                                        <box-icon className="expense-icon" name='edit' type='solid'></box-icon>
+                                    </button>
+                                </div>
                             </td>
+
                         </tr>
                     ))}
-                    <tr>
-                        <td colSpan="4" className="total-row">
-                            Total: {calculateTotalAmount()}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
-            <ConfirmationModal 
-                isOpen={isModalOpen} 
-                onClose={handleCloseModal} 
-                onConfirm={handleConfirmDelete} 
+
+            {/* Render the confirmation modal */}
+            <ConfirmationModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                onConfirm={handleConfirmDelete}
             />
         </div>
     );
