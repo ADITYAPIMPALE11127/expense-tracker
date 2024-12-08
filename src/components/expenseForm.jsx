@@ -31,7 +31,7 @@ function ExpenseForm({ addExpense, entryToEdit }) {
         event.preventDefault();
         const expenseData = {
             amount: parseFloat(amount),
-            date: selectedDate ? format(selectedDate, 'MMMM d, yyyy') : null,
+            date: selectedDate ? format(selectedDate, 'MM/d/yyyy') : null,
             description,
             category,
         };
