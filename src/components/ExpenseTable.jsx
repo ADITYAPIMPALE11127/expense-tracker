@@ -38,8 +38,8 @@ function ExpenseTable({ expenseEntries, onReset, onDelete, onEdit }) {
             <table className="expense-table">
                 <thead>
                     <tr>
-                        <th style={{ width: '20%' }}>Amount</th>
-                        <th style={{ width: '20%' }}>Date</th>
+                        <th style={{ width: '0%',fontFamily:'cursive',letterSpacing:1 }}>Amount</th>
+                        <th style={{ width: '5%' }}>Date</th>
                         <th style={{ width: '20%' }}>Description</th>
                         <th style={{ width: '25%' }}>Category</th>
                         <th>Action</th>
@@ -52,7 +52,7 @@ function ExpenseTable({ expenseEntries, onReset, onDelete, onEdit }) {
                             <td>{entry.date}</td>
                             <td>{entry.description}</td>
                             <td>{entry.category}</td>
-                            <td>
+                            <td style={{ width: '30%' }}>
                                 <div className="button-container">
                                     <button
                                         onClick={() => handleDeleteClick(index)}
