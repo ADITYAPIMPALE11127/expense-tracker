@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    max-width: 600px; /* Responsive max width */
+    max-width: 600px; 
     background-color: #f9f9f9;
     border-radius: 8px;
     padding: 20px;
@@ -21,7 +21,7 @@
 .expense-table {
     width: 100%;
     border-collapse: collapse;
-    overflow-x: auto; /* Enable horizontal scrolling on small screens */
+    overflow-x: auto; 
 }
 
 .expense-table th,
@@ -30,13 +30,13 @@
     text-align: left;
     border-bottom: 1px solid #ddd;
     overflow: hidden;
-    text-overflow: ellipsis; /* Add ellipsis for overflowing content */
+    text-overflow: ellipsis;
 }
 
 .expense-table th {
     background-color: #4CAF50;
     color: white;
-    font-size: 1rem; /* Slightly larger font for headers */
+    font-size: 1rem; 
 }
 
 .expense-table tr:hover {
@@ -79,21 +79,21 @@
     background-color: green;
 }
 
-/* Responsive table adjustments */
+
 @media (max-width: 768px) {
     .expense-table-container {
-        padding: 10px; /* Reduce padding on smaller screens */
+        padding: 10px; 
     }
 
     .expense-table th,
     .expense-table td {
-        padding: 6px; /* Reduce padding for mobile */
-        font-size: 0.85rem; /* Smaller font size for mobile */
-        word-wrap: break-word; /* Allow word wrapping */
+        padding: 6px;
+        font-size: 0.85rem;
+        word-wrap: break-word; 
     }
 
     .expense-table th {
-        font-size: 0.9rem; /* Adjust header font size */
+        font-size: 0.9rem;
     }
 
     .expense-table-header {
@@ -102,40 +102,40 @@
     }
 
     .expense-button {
-        padding: 8px; /* Smaller padding on mobile */
-        font-size: 0.9rem; /* Smaller font size for buttons */
+        padding: 8px; 
+        font-size: 0.9rem; 
     }
 
     .expense-icon {
-        font-size: 18px; /* Reduce icon size for mobile */
-        padding: 4px; /* Reduce padding around icon */
+        font-size: 18px;
+        padding: 4px; 
     }
 
     .button-container {
-        gap: 5px; /* Reduce space between buttons on mobile */
+        gap: 5px; 
     }
 
-    /* Make the table scrollable horizontally on small screens */
+    
     .expense-table {
         display: block;
-        overflow-x: auto; /* Enable horizontal scroll */
-        white-space: nowrap; /* Prevent wrapping of columns */
+        overflow-x: auto;
+        white-space: nowrap; 
     }
 
-    /* Ensure the columns stay aligned horizontally on small screens */
+   
     .expense-table th,
     .expense-table td {
         display: inline-block;
-        min-width: 100px; /* Ensures a minimum width for readability */
+        min-width: 100px; 
         text-align: center;
     }
 
     .expense-table td {
-        padding: 6px 10px; /* Adjust padding for better spacing */
+        padding: 6px 10px; 
     }
 
-    /* Allow the date and description columns to wrap on small screens */
+    
     .expense-table td.date, .expense-table td.description {
-        white-space: normal; /* Allow wrapping */
+        white-space: normal; 
     }
 }

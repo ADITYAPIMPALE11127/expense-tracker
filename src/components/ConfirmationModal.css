@@ -1,17 +1,17 @@
-/* Overlay covering the entire viewport */
+
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    background: rgba(0, 0, 0, 0.5); 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Modal dialog box */
+
 .modal-content {
     background-color: white;
     padding: 20px;
@@ -20,12 +20,12 @@
     color: black;
 }
 
-/* Container for modal buttons */
+
 .modal-buttons {
     margin-top: 20px;
 }
 
-/* Styles for each button in the modal */
+
 .modal-buttons button {
     margin: 0 10px;
     padding: 10px 20px;
@@ -37,12 +37,12 @@
     font-size: 15px;
 }
 
-/* First button (e.g., Confirm/Delete) - Red */
+
 .modal-buttons button:first-child {
     background-color: red;
 }
 
-/* Second button (e.g., Cancel) - Blue */
+
 .modal-buttons button:last-child {
     background-color: blue;
 }

@@ -9,7 +9,7 @@ function ResetTableButton({ handleReset }) {
     const handleCloseModal = () => setShowModal(false);
 
     const handleConfirmReset = () => {
-        handleReset(); // Invoke the reset function passed from the parent
+        handleReset(); 
         handleCloseModal();
     };
 

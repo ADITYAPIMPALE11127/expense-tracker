@@ -62,11 +62,12 @@ function ExpenseForm({ addExpense, entryToEdit }) {
                         placeholder="Enter amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
+                        required
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="Date">
                     <Form.Label>Select Date:</Form.Label>
-                    <DatePicker selected={selectedDate} onChange={handleChange} dateFormat="MMMM d, yyyy" />
+                    <DatePicker selected={selectedDate} onChange={handleChange} dateFormat="MMMM d, yyyy"   required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="Description">
                     <Form.Label>Description:</Form.Label>
@@ -75,6 +76,7 @@ function ExpenseForm({ addExpense, entryToEdit }) {
                         placeholder="Enter description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                        required
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="Category">
@@ -83,6 +85,7 @@ function ExpenseForm({ addExpense, entryToEdit }) {
                         aria-label="Default select example"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
+                        required
                     >
                         <option>Select Category</option>
                         <option value="Food">Food</option>

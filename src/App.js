@@ -45,10 +45,6 @@ function App() {
         setEntryToEdit(indexToEdit);
     };
 
-    const handleUpdate = (updatedEntries) => {
-        setExpenseEntries(updatedEntries);
-        localStorage.setItem('expenseData', JSON.stringify(updatedEntries));
-    };
 
     return (
         <div>
@@ -73,12 +69,12 @@ function App() {
                     </div>
                 </div>
             </div>
-                        {/* AdSense ad at the bottom of the page */}
+                  
                         <ins
                 className="adsbygoogle"
                 style={{ display: "block", textAlign: "center", margin: "20px 0" }}
                 data-ad-client="ca-pub-5156983263059285"
-                data-ad-slot="9876543210" // Replace with another AdSense slot ID
+                data-ad-slot="9876543210" 
                 data-ad-format="auto"
                 data-full-width-responsive="true"
             ></ins>

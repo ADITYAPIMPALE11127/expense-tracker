@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ResetTableButton from './ResetTableButton';
-import ConfirmationModal from './ConfirmationModal'; // Import the modal
+import ConfirmationModal from './ConfirmationModal';
 import 'boxicons';
 import './ExpenseTable.css';
 
@@ -26,7 +26,7 @@ function ExpenseTable({ expenseEntries, onReset, onDelete, onEdit }) {
         setSelectedIndex(null);
     };
 
-    // Calculate the total amount
+  
     const totalAmount = expenseEntries.reduce((total, entry) => total + parseFloat(entry.amount), 0);
 
     return (
@@ -89,12 +89,12 @@ function ExpenseTable({ expenseEntries, onReset, onDelete, onEdit }) {
                 </tbody>
             </table>
 
-            {/* Display the total amount */}
+           
             <div className="total-amount" style={{ marginTop: '20px', textAlign: 'right', fontSize: '1.2em', fontWeight: 'bold', color: '#000' }}>
                 Total Amount: ₹{totalAmount.toFixed(2)}
             </div>
 
-            {/* Render the confirmation modal */}
+            
             <ConfirmationModal isOpen={isModalOpen} onClose={handleCloseModal} onConfirm={handleConfirmDelete} />
         </div>
     );

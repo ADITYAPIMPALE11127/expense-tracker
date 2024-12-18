@@ -1,5 +1,5 @@
 import React from 'react';
-import './ConfirmationModal.css'; // You can style this modal as needed
+import './ConfirmationModal.css'; 
 
 function ConfirmationModal({ isOpen, onClose, onConfirm }) {
     if (!isOpen) return null;
